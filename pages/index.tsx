@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { faker } from '@faker-js/faker';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   return (
@@ -24,15 +25,18 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/static" className={styles.card}>
-            <h2>정적 라우팅 &rarr;</h2>
-            <p>/pages 하위 디렉토리의 정적인 위치에 있는 정적 페이지로 이동</p>
-          </a>
-
-          <a href={`/api/${faker.name.fullName()}`} className={styles.card}>
-            <h2>동적 라우팅 &rarr;</h2>
-            <p>faker 라이브러리를 이용하여 랜덤한 동적 페이지로 이동</p>
-          </a>
+          <div className={styles.card}>
+            <Link href="/static" className={styles.card}>
+              <h2>정적 라우팅 &rarr;</h2>
+              <p>/pages 하위 디렉토리의 정적인 위치에 있는 정적 페이지로 이동</p>
+            </Link>
+          </div>
+          <div className={styles.card}> 
+            <Link href={`/user/${faker.name.firstName()}`}>
+              <h2>동적 라우팅 &rarr;</h2>
+              <p>faker 라이브러리를 이용하여 랜덤한 동적 페이지로 이동</p>
+            </Link>
+          </div>
         </div>
       </main>
 
